@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id()->unique();
             $table->string("title");
+            $table->text("excerpt");
             $table->text("content");
-            $table->string("image")->nullable();
+            // $table->string("image")->nullable();
             $table->timestamps();
         });
     }

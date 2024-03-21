@@ -1,8 +1,10 @@
 <?php
 
-use App\Models\Note;
+use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome', ["notes" => Note::all(), "kocak" => "Memememk"]);
+    return view('welcome', ["kocak" => "Memememk"]);
 });
+
+Route::resource("/notes", NoteController::class);

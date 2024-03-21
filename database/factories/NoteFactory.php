@@ -18,6 +18,7 @@ class NoteFactory extends Factory
     {
         return [
             "title" => fake()->words(mt_rand(3, 5), true),
+            "excerpt" => fake()->words(mt_rand(5, 7), true),
             "content" => fake()->paragraph(mt_rand(3, 5))
         ];
     }

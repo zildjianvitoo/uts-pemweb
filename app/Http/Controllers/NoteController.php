@@ -13,7 +13,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        return view("notes.index", ["notes" => Note::all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class NoteController extends Controller
      */
     public function show(Note $note)
     {
-        //
+        return view("notes.note", ["note" => $note]);
     }
 
     /**
@@ -61,6 +61,8 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        //
+        Note::find($note->id)->delete();
+
+        return redirect("/notes");
     }
 }
