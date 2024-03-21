@@ -1,10 +1,14 @@
-@extends('welcome')
+@extends('layouts.main')
 
 
 @section('container')
   <div class="row my-3">
     <div class="col-md-4">
-      <button class="btn btn-primary">Buat catatan baru</button>
+      <a href="/notes/create">
+        <button class="btn btn-primary">
+          Buat catatan baru
+        </button>
+      </a>
     </div>
   </div>
   <div class="row">
@@ -23,7 +27,7 @@
                 </a>
                 <ul class="dropdown-menu p-0">
                   <li>
-                    <a class="dropdown-item bg-warning text-white" href="/notes/edit">
+                    <a class="dropdown-item bg-warning text-white" href="/notes/{{ $note->id }}/edit">
                       <button class="btn text-white">Edit</button>
                     </a>
                   </li>

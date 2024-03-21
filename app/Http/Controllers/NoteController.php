@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Http\Requests\StoreNoteRequest;
 use App\Http\Requests\UpdateNoteRequest;
+use Illuminate\Support\Str;
 
 class NoteController extends Controller
 {
@@ -21,7 +22,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view("notes.create");
     }
 
     /**
@@ -29,7 +30,18 @@ class NoteController extends Controller
      */
     public function store(StoreNoteRequest $request)
     {
-        //
+        $validated = $request->validate([
+            "title" => "required|min:3",
+            "description" => "required|min:5",
+        ]);
+
+        Note::create([
+            "title" => $validated["title"],
+            "excerpt" => Str::excerpt($validated["description"]),
+            "content" => $validated["description"]
+        ]);
+
+        return redirect("/notes");
     }
 
     /**
@@ -45,7 +57,7 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
-        //
+        return view("notes.edit", ["note" => $note]);
     }
 
     /**
@@ -53,7 +65,20 @@ class NoteController extends Controller
      */
     public function update(UpdateNoteRequest $request, Note $note)
     {
-        //
+        $validated = $request->validate([
+            "title" => "required|min:3",
+            "description" => "required|min:5",
+        ]);
+
+        $note = Note::find($note->id);
+
+        $note->update([
+            "title" => $validated["title"],
+            "excerpt" => Str::excerpt($validated["description"]),
+            "content" => $validated["description"]
+        ]);
+
+        return redirect("/notes");
     }
 
     /**
