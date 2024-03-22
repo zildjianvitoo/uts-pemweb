@@ -2,11 +2,11 @@
 
 
 @section('main')
-  <div class="flex flex-col gap-4 max-w-screen-md">
+  <div class="flex flex-col max-w-screen-md gap-4">
     <div class="flex gap-3 my-1">
       <a href="/todos/{{ $todo->id }}/edit">
         <button type="button"
-          class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Yellow</button>
+          class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Edit</button>
       </a>
       <form action="/todos/{{ $todo->id }}" method="POST">
         @csrf
@@ -18,7 +18,7 @@
       </form>
     </div>
     <h1
-      class="text-4xl  text-transparent bg-gradient-to-r bg-clip-text from from-emerald-600 to to-emerald-900 font-semibold ">
+      class="text-4xl font-semibold text-transparent bg-gradient-to-r bg-clip-text from from-emerald-600 to to-emerald-900 ">
       {{ $todo->title }}
     </h1>
     <p class="text-lg">{{ $todo->description }}</p>
